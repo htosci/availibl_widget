@@ -5,7 +5,6 @@ old*.*
 *old.*
 .clasp.json
 config.local.js
-appsscript.json
 setting.js
 .clasp.json
 .git/
