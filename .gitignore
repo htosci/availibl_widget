@@ -1,0 +1,9 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+/old
+old*.*
+*old.*
+.clasp.json
+config.local.js
+appsscript.json
+setting.js
