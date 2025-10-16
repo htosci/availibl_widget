@@ -1,7 +1,15 @@
 window.addEventListener('DOMContentLoaded', loadWidget);
+
+// 1. Определение URL:
+// Скрипт сначала ищет глобальную переменную window.APP_SCRIPT_URL.
+// Эту переменную вы будете определять либо на сайте, либо в локальном config-файле.
+// Если переменная не найдена, используется ПЛЕЙСХОЛДЕР по умолчанию.
+const APP_SCRIPT_URL = window.APP_SCRIPT_URL || "https://script.google.com/macros/s/PLACEHOLDER_FOR_LOCAL_DEV/exec";
+
 async function loadWidget() {
     try {
-    const url = "https://script.google.com/macros/s/AKfycbwAZfVirsifeDdc177mplD4wEzMR9Mk5GKoInaAPqT35NiIC27f09YCsHfFhs1h2mQ9/exec";
+    // Используем нашу переменную APP_SCRIPT_URL
+    const url = APP_SCRIPT_URL; 
     const params = new URLSearchParams({
         type: "json-all",
     });
