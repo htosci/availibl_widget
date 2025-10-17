@@ -5,18 +5,10 @@
     <title>example</title>
 </head>
 <body>
-    <script>
-        window.addEventListener('DOMContentLoaded', loadWidget);
-
-        // 1. Определение URL:
-        // Скрипт сначала ищет глобальную переменную window.APP_SCRIPT_URL.
-        // Эту переменную вы будете определять либо на сайте, либо в локальном config-файле.
-        // Если переменная не найдена, используется ПЛЕЙСХОЛДЕР по умолчанию.
-        const APP_SCRIPT_URL = window.APP_SCRIPT_URL || "https://script.google.com/macros/s/PLACEHOLDER_FOR_LOCAL_DEV/exec";
-    </script>
+    <script src="config.local.js"></script>
 
     <div id="appscript-widget-container" style="padding: 0 4px 0 4px;"></div>
-    <script src="config.local.js"></script>
+    
     <script src="script_to_site.js"></script>
 </body>
 </html>

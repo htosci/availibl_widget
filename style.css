@@ -153,7 +153,7 @@ div.available-container {
   
     /* Стили для ячеек свободно - занято */
 .available-container td.aval-true { 
-        background-color: rgb(153, 191, 130);
+        background-color: rgb(53, 91, 30);
     }
 .available-container td.aval-true:hover,
 .available-container .aval-true + td.aval-false:hover{ 
