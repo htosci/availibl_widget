@@ -1,46 +1,47 @@
-            window.addEventListener('DOMContentLoaded', loadWidget);
+window.addEventListener('DOMContentLoaded', loadWidget);
+//const APP_SCRIPT_URL = window.APP_SCRIPT_URL || "https://script.google.com/macros/s/PLACEHOLDER_FOR_LOCAL_DEV/exec";
 
-        // 1. Определение URL:
-        // Скрипт сначала ищет глобальную переменную window.APP_SCRIPT_URL.
-        // Эту переменную вы будете определять либо на сайте, либо в локальном config-файле.
-        // Если переменная не найдена, используется ПЛЕЙСХОЛДЕР по умолчанию.
-        const APP_SCRIPT_URL = window.APP_SCRIPT_URL || "https://script.google.com/macros/s/PLACEHOLDER_FOR_LOCAL_DEV/exec";
+console.log("APP_SCRIPT_URL = ", APP_SCRIPT_URL);
 async function loadWidget() {
     try {
-    // Используем нашу переменную APP_SCRIPT_URL
-    const url = APP_SCRIPT_URL; 
-    const params = new URLSearchParams({
-        type: "json-all",
-    });
-    const response = await fetch(`${url}?${params}`);
-    if (!response.ok) throw new Error("Network error: " + response.status);
+        // Используем нашу переменную APP_SCRIPT_URL
+        const url = APP_SCRIPT_URL; 
+        const params = new URLSearchParams({
+            type: "json-all",
+        });
+        let data;
+        if (url === "test") {
+            data = TEST_DATA_JSON;
+        }else{
+            const response = await fetch(`${url}?${params}`);
+            if (!response.ok) throw new Error("Network error: " + response.status);
+            data = await response.json();
+        }
 
-    const data = await response.json();
+        const jsonData = data.jsonData;
+        if (!jsonData || !jsonData.date || !jsonData.house || !jsonData.cells || !jsonData.holiday || !jsonData.style) {
+            throw new Error("Invalid data structure");
+        }
 
-    const jsonData = data.jsonData;
-    if (!jsonData || !jsonData.date || !jsonData.house || !jsonData.cells || !jsonData.holiday || !jsonData.style) {
-        throw new Error("Invalid data structure");
-      }
-
-    jsonData.date = jsonData.date.map((dateString) => new Date(dateString));
-    
-    const tableHTML = generateTableFromJson(jsonData);
-    
-    const container = document.createElement('div');
-    container.className = 'available-container';
-    container.appendChild(tableHTML);
-    
-    const styleElement = document.createElement('style');
-    styleElement.textContent = jsonData.style;
-    document.head.appendChild(styleElement);
-    
-    document.getElementById('appscript-widget-container').appendChild(container);
-    
-    setupTableInteractions(jsonData.date);
+        jsonData.date = jsonData.date.map((dateString) => new Date(dateString));
+        
+        const tableHTML = generateTableFromJson(jsonData);
+        
+        const container = document.createElement('div');
+        container.className = 'available-container';
+        container.appendChild(tableHTML);
+        
+        const styleElement = document.createElement('style');
+        styleElement.textContent = jsonData.style;
+        document.head.appendChild(styleElement);
+        
+        document.getElementById('appscript-widget-container').appendChild(container);
+        
+        setupTableInteractions(jsonData.date);
     } catch (error) {
-    console.error("Loading vidget error: ", error);
-    document.getElementById('appscript-widget-container').innerHTML = 
-        "Не удалось загрузить таблицу";
+        console.error("Loading vidget error: ", error);
+        document.getElementById('appscript-widget-container').innerHTML = 
+            "Не удалось загрузить таблицу";
     }
 }
 function generateTableFromJson(jsonData) {

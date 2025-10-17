@@ -63,7 +63,7 @@ async function updateCacheAndFile() {
     try {
       // Здесь размещаем код, который не должен выполняться параллельно
 //      UpdateTableFromZAG();
-      Logger.log(" UpdateTableFromZAG() прошел");
+//      Logger.log(" UpdateTableFromZAG() прошел");
               const jsondata = await generateJsonData();
               const jsonString = JSON.stringify(jsondata);
               Logger.log("JSON создан.");
@@ -81,7 +81,7 @@ function saveDataToCacheAndFile(data, fileName){
   Logger.log(`saveDataToCacheAndFile(${data.slice(0,50)}, ${fileName} (должно быть = "vidget.json") )`);
   const cache = CacheService.getScriptCache();
   try {
-    cache.put(fileName, data, 7200); // Пытаемся записать // в секундах
+    cache.put(fileName, data, 7200); // Пытаемся записать //ttl в секундах
     const cachedValue = cache.get(fileName); // Сразу читаем обратно
     if (cachedValue === data) {
       Logger.log("✅ Данные успешно записаны в кэш! key: " + fileName);
