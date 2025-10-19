@@ -8,3 +8,4 @@ old*.*
 .clasp.json
 config.local.js
 setting.js
+appsscript.json
