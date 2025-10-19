@@ -91,6 +91,7 @@ div.available-container {
 /* Вторая строка ------------------ выходные */
 .available-container tr.weekday th .content{
     font-family: 'Marmelad', Arial, sans-serif;
+    font-weight: 400;
     font-size: 18px;
     height: 19px;
     color: #bbb;
@@ -155,7 +156,7 @@ div.available-container {
 }
   
 /* рабочий - нерабочий день*/
-.available-container .not-work .content{
+.available-container td.not-work .content{
     font-weight: bold;
 }
 .available-container th.not-work.date .content{
@@ -167,7 +168,7 @@ div.available-container {
     padding-top: 20px;
 }  
 .available-container .not-work:not(.weekday) .bg{
-    background-color: rgba(0,0,0,.05);
+/*    background-color: rgba(0,0,0,.05); */
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
 }  
