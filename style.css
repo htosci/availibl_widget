@@ -90,6 +90,7 @@ div.available-container {
 
 /* Вторая строка ------------------ выходные */
 .available-container tr.weekday th .content{
+    font-family: 'Marmelad', Arial, sans-serif;
     font-size: 18px;
     height: 19px;
     color: #bbb;

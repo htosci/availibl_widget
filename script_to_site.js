@@ -94,7 +94,7 @@ function isDateInPeriods(targetDate) {
     
     // Декабрь (11) 24
     const P1_END_MONTH = 11; // Декабрь
-    const P1_END_DAY = 24; 
+    const P1_END_DAY = 23; 
 
     // Период 2: с 11 января по 1 марта
     // Январь (0) 11-1
@@ -102,8 +102,8 @@ function isDateInPeriods(targetDate) {
     const P2_START_DAY = 11;
     
     // Март (2) 1
-    const P2_END_MONTH = 2; // Март
-    const P2_END_DAY = 1; 
+    const P2_END_MONTH = 1; // Март
+    const P2_END_DAY = 28; 
 
     // --- Шаг 3: Вспомогательная функция для сравнения дат ---
     // Возвращает числовой код ММДД для сравнения (например, 1110 для 10 ноября)
