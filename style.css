@@ -1,194 +1,248 @@
 div.available-container {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  box-sizing: content-box;
-  padding: 0;
-  margin: 0;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    box-sizing: content-box;
+    padding: 0;
+    margin: 0;
 }
 
 .available-container *{
-        padding: 0;
-        margin: 0;
-        background-color:transparent;
-        border: none;
-    }
+    padding: 0;
+    margin: 0;
+    background-color:transparent;
+    border: none;
+}
 
 .available-container table.available{
-        table-layout: fixed;
-        display: table;
-        font-family: CirceRounded, sans-serif;
-        border-spacing: 0;
-    }
+    table-layout: fixed;
+    display: table;
+    font-family: CirceRounded, sans-serif;
+    border-spacing: 0;
+}
   
 /*все ячейки*/
-.available-container th,.available-container td{
-        text-align: center;
-        vertical-align: center;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        -webkit-background-size: cover;
-        background-clip: padding-box;
-        border-top: 4px solid transparent;
-        border-bottom: 4px solid transparent;
-        border-left: 1px solid transparent;    
-        border-right: 1px solid transparent;
-    }
+.available-container th,
+.available-container td{
+    border: none;
+    background-color: transparent;
+    position: relative;
+}
+.available-container th .content,
+.available-container td .content{
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    background-clip: padding-box;
+    margin: 4px 1px;
+    background-color: transparent;
+    --date: "";
+}
+.available-container th .bg,
+.available-container td .bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-clip: content-box;
+    box-sizing: border-box;
+}
 
 /*все ячейки доступности*/
-.available-container td{
-        height: 40px;
-        min-width: 42px;
-        width: 42px;
-        max-width: 42px;
-        position: relative;
-        border-left-color: white;
-        border-right-color: white;
-
-
-    }
+.available-container td .content,
+.available-container th .content
+{
+    height: 40px;
+    min-width: 40px;
+    width: 40px;
+    max-width: 40px;
+}
 
 /* Первая строка ----------------- месяцы */ 
 .available-container th.month{
-        text-align: left;
-        height: 30px;
-        min-width: 42px;
-        max-width: 42px;
-    }
+    text-align: left;
+    height: 30px;
+    min-width: 40px;
+    max-width: 40px;
+}
 .available-container div.month-text{  
-          text-align: left;
-          font-size: 24px;
-          font-weight: 200;
-          height: 30px;
-          position: sticky;
-          position: -webkit-sticky;
-          left: 95px;
-          width: min-content;
-          width: -webkit-min-content;
-          max-width: 100%;
-          padding: 0 8px;
-          border-left: 1px solid black;
-          overflow: hidden;
-    }
-/* Вторая строка ------------------ даты */
-.available-container th.date{
-        font-size: 18px;
-        font-weight: 200;
-        height: 60px;
-    }
-/* бокс с градиентом, что бы закрывать даты и месяца */
-.available-container th.room-name.date{
-    background-color: transparent;
-    border-color: transparent;
-    border-bottom-color: white ;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 200;
+    height: 30px;
+    position: sticky;
+    position: -webkit-sticky;
+    left: 95px;
+    width: min-content;
+    width: -webkit-min-content;
+    max-width: 100%;
+    padding: 0 8px;
+    border-left: 1px solid black;
+    overflow: hidden;
+}
 
+/* Вторая строка ------------------ выходные */
+.available-container tr.weekday th .content{
+    font-size: 18px;
+    height: 19px;
+    color: #bbb;
+}
+
+/* Третья строка ------------------ даты */
+.available-container th.date  .content{
+    font-size: 18px;
+    font-weight: 200;
+    height: 40px;
+    border-bottom: 16px solid transparent;
+    margin-top: 0;
+}
+
+/* бокс с градиентом, что бы закрывать даты и месяца */
+.available-container th.room-name.date,
+.available-container th.room-name.weekday{
+    background-color: transparent;
 }
 .available-container div.white-box {
-        background-image: linear-gradient(to right ,white 60%,transparent);
-        background-image: -webkit-linear-gradient(left, rgba(255,255,255,1) 60%, rgba(255,255,255,0)); /* Safari 5.1-6 */
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 106px;
-        z-index: 2;
-    }
+    background-image: linear-gradient(to right ,white 60%,transparent);
+    background-image: -webkit-linear-gradient(left, rgba(255,255,255,1) 60%, rgba(255,255,255,0)); /* Safari 5.1-6 */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 116px;
+    z-index: 2;
+}
 
 /* подсветка выделения */
-.available-container th.highlight{
+.available-container th.highlight .content{
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) !important;
 }
 
-    /* Первая колонка(таблица) |||||| названия комнат */
-.available-container th.room-name {
-        left: -20px;
-        position: sticky;
-        position: -webkit-sticky;
-        font-family: Marmelad, Arial, sans-serif;
-        font-weight: 400;
-        font-size: 24px;
-        height: 40px;
-        min-width: 90px;
-        max-width: 120px;
-        padding-left: 24px;
-        border-left: 0;
-        background-color: white;
-        z-index: 2;
-        border-top: 4px solid white;
-        border-bottom: 4px solid white;
-        border-right: 2px solid white;
-    }
-    /* Чередование цветов */
-.available-container tr:nth-child(2n+4) th.room-name{
-        background-image: linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3));/* белttее */
-    }
-.available-container tr:nth-child(2n+3) th.room-name{
-        background-image: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.1));/* чернее */
-    }
-
-.available-container tr{
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    background-clip: padding-box;
+/* Первая колонка |||||| названия комнат */
+.available-container th.room-name{
+    left: -20px;
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 2;
+    background-color: white;
 }
-    /* Чередование цветов фона для рядов */
-.available-container  tr:nth-child(2n+4){
-        background-color: rgba(255,255,255,.3); /* белый */
-    }
-.available-container  tr:nth-child(2n+3){
-        background-color: rgba(0,0,0,.05); /* светло-серый */
-    }
-  
-    /* рабочий - нерабочий день*/
-.available-container th.not-work{
-      background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="rgba(0, 0, 0, 0.1)"><circle cx="50%" cy="50%" r="50%" /></svg>');
-      background-size: contain;
-      font-weight: bold;
-    }
-.available-container td.not-work {
-      font-weight: bold;
-    }  
-  
-    /* Стили для ячеек свободно - занято */
-.available-container td.aval-true { 
-        background-color: rgb(153, 191, 130);
-    }
-.available-container td.aval-true:hover,
-.available-container .aval-true + td.aval-false:hover{ 
-        border: 2px solid #607851;
-        box-sizing: border-box;
-    }
-    
-.available-container .aval-false + .aval-true{ /*начало свободного периода*/
-      background-color: transparent; 
-      background-image: url('data:image/svg+xml;utf8,<svg width="270" height="100" viewBox="0 0 270 100" xmlns="http://www.w3.org/2000/svg" fill="rgb(153, 191, 130)">  <path d="M85,0 h100 a50,50 0 0,1 0,100 h-100 a50,50 0 0,1 0,-100 Z"/></svg>');
-      background-position: left;
-    }
-.available-container .aval-true + .aval-false{ /*конец свободного периода*/
-      background-color: transparent;
-      background-image: url('data:image/svg+xml;utf8,<svg width="270" height="100" viewBox="0 0 270 100" xmlns="http://www.w3.org/2000/svg" fill="rgb(153, 191, 130)">  <path d="M85,0 h100 a50,50 0 0,1 0,100 h-100 a50,50 0 0,1 0,-100 Z"/></svg>');
-      background-position: right;
-    }
+.available-container th.room-name .content{
+    font-family: Marmelad, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    height: 40px;
+    min-width: 90px;
+    max-width: 120px;
+    padding-left: 24px;
+    z-index: 2;
+    margin-right: 0;
+}
 
-    .available-container td.range.range-start{
-        background-color: rgb(153, 191, 130);
-        background-image: none;
-        border-left: 2px solid #607851;
-        border-top-left-radius: 50%;
-        border-bottom-left-radius: 50%;
-    }
-    .available-container td.range{
-        color: white;
-        border-top: 2px solid #607851;
-        border-bottom: 2px solid #607851;
-        box-sizing: border-box;
-    }
-    .available-container  td.range.range-end{
-        background-color: rgb(153, 191, 130);
-        background-image: none;
-        border-right: 2px solid #607851;
-        border-top-right-radius: 50%;
-        border-bottom-right-radius: 50%;
-    }
+/* Чередование цветов фона для рядов */
+.available-container  tr:nth-child(2n+5) .content{
+    background-color: rgba(255,255,255,.3); /* белый */
+}
+.available-container  tr:nth-child(2n+4) .content{
+    background-color: rgba(0,0,0,.05); /* светло-серый */
+}
+  
+/* рабочий - нерабочий день*/
+.available-container .not-work .content{
+    font-weight: bold;
+}
+.available-container th.not-work.date .content{
+    background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="rgba(200, 200, 200, 1)"><circle cx="50%" cy="50%" r="50%" /></svg>');
+    background-size: contain;
+    font-weight: bold;
+}
+.available-container th.not-work.date .bg{
+    padding-top: 20px;
+}  
+.available-container .not-work:not(.weekday) .bg{
+    background-color: rgba(0,0,0,.05);
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+}  
+
+/* спец периоды (по дням недели)*/
+.available-container .special .bg,
+.available-container .special + :not(.special) .bg
+{
+    background-color: rgba(255, 190, 0, 0.23);
+} 
+.available-container :not(.special) + .special .bg{
+    padding-left: 50%;
+    background-clip: content-box;
+}
+.available-container .special + :not(.special) .bg{
+    padding-right: 50%;
+    background-clip: content-box;
+}
+.available-container .special.weekday .bg,
+.available-container .special.weekday + :not(.special) .bg{
+    padding-top: 20%;
+}
+.available-container :not(.special) + .special.weekday .bg{
+    border-top-left-radius: 100%;
+}
+.available-container .special + .weekday:not(.special) .bg{
+    border-top-right-radius: 100%;
+}
+
+/* Стили для ячеек свободно - занято */
+.available-container .aval-true + .aval-true .content,
+.available-container .room-name + .aval-true .content{
+    background-color: rgb(153, 191, 130);
+    position: relative;
+}
+.available-container .aval-true:hover .content,
+.available-container .aval-true + .aval-false:hover .content{ 
+    border: 2px solid #607851;
+    box-sizing: border-box;
+}
+    
+.available-container .aval-false + .aval-true .content{ /*начало свободного периода*/
+    background-image: url('data:image/svg+xml;utf8,<svg width="270" height="100" viewBox="0 0 270 100" xmlns="http://www.w3.org/2000/svg" fill="rgb(153, 191, 130)">  <path d="M85,0 h100 a50,50 0 0,1 0,100 h-100 a50,50 0 0,1 0,-100 Z"/></svg>');
+    background-position: left;
+    position: relative;
+}
+.available-container .aval-true + .aval-false .content{ /*конец свободного периода*/
+    background-image: url('data:image/svg+xml;utf8,<svg width="270" height="100" viewBox="0 0 270 100" xmlns="http://www.w3.org/2000/svg" fill="rgb(153, 191, 130)">  <path d="M85,0 h100 a50,50 0 0,1 0,100 h-100 a50,50 0 0,1 0,-100 Z"/></svg>');
+    background-position: right;
+    position: relative;
+}
+
+.available-container td.range.range-start .content::after{
+    background-color: rgb(153, 191, 130);
+    border-left: 2px solid #607851;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+.available-container td.range .content::after{
+    color: white;
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    content: var(--date);
+    border-top: 2px solid #607851;
+    border-bottom: 2px solid #607851;
+}
+.available-container  td.range.range-end .content::after{
+    background-color: rgb(153, 191, 130);
+    border-right: 2px solid #607851;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
